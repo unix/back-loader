@@ -3,6 +3,7 @@ import * as webpack from 'webpack'
 import * as webpackBase from './webpack.base'
 import * as webpackMerge from 'webpack-merge'
 import * as HtmlWebpackPlugin from 'html-webpack-plugin'
+const tslintConfig = require('../tslint.json')
 
 module.exports = webpackMerge(webpackBase, {
   

@@ -4,9 +4,9 @@
   "description": "",
   "main": "commitlint.config.js",
   "scripts": {
-    "ex": "tsc build/webpack.dev.ts && env DEBUG=true webpack-dev-server --config build/webpack.dev.js --inline --progress --port 1338",
-    "ex:build": "tsc build/webpack.prod.ts && rm -rf dist && webpack --config build/webpack.prod.js",
-    "release": "tsc build/webpack.release.ts && rm -rf release && webpack --config build/webpack.release.js",
+    "ex": "tsc ./build/webpack.dev.ts && env DEBUG=true webpack-dev-server --config build/webpack.dev.js --inline --progress --port 1338",
+    "ex:build": "tsc ./build/webpack.prod.ts && rm -rf dist && webpack --config build/webpack.prod.js",
+    "release": "tsc ./build/release/webpack.prod.ts && rm -rf release && webpack --config build/release/webpack.prod.js",
     "commit": "node_modules/commitizen/bin/commitizen init cz-conventional-changelog --save --save-exact",
     "commitmsg": "commitlint -e $GIT_PARAMS"
   },

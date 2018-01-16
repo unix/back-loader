@@ -2,11 +2,13 @@
   "compilerOptions": {
     "lib": ["es2015", "dom"],
     "target": "es5",
-    "declaration": false,
+    "declaration": true,
+    "outDir": "release/",
     "sourceMap": true,
     "removeComments": true,
     "noImplicitAny": false,
     "preserveConstEnums": true,
+    "stripInternal": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "typeRoots": [
@@ -15,9 +17,7 @@
     ]
   },
   "compileOnSave": false,
-  "includes": [
-    "src/**/*"
-  ],
+  "files": ["src/index.ts"],
   "exclude": [
     "node_modules",
     "templates",
