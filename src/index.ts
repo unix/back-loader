@@ -1,3 +1,11 @@
-const unm: string = '1'
+import * as Check from './utils/check'
+import { LoaderOptions } from './types'
 
-console.log(unm)
+export class BackLoader {
+  
+  constructor(ops: LoaderOptions) {
+    Check.options(ops)
+  }
+  
+  
+}
