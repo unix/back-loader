@@ -6,7 +6,7 @@
   "scripts": {
     "ex": "tsc ./build/webpack.dev.ts && env DEBUG=true webpack-dev-server --config build/webpack.dev.js --inline --progress --port 1338 && npm run tsc:clean",
     "ex:build": "tsc ./build/webpack.prod.ts && rm -rf dist && webpack --config build/webpack.prod.js && npm run tsc:clean",
-    "release": "tsc ./build/release/webpack.prod.ts && rm -rf release && webpack --config build/release/webpack.prod.js && npm run tsc:clean",
+    "release": "tsc ./build/main/webpack.prod.ts && rm -rf release && webpack --config build/release/webpack.prod.js && npm run tsc:clean",
     "tsc:clean": "find build -name '*.js' | xargs rm -f ",
     "clearup": "rm -rf dist & rm -rf release",
     "commit": "node_modules/commitizen/bin/commitizen init cz-conventional-changelog --save --save-exact",
