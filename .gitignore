@@ -60,4 +60,4 @@ typings/
 # build scripts
 build/**/*.js
 dist
-
+release
