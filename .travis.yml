@@ -17,3 +17,6 @@ install:
 script:
   - /bin/bash build/lint-commits.sh
   - npm run ex:build && npm run release
+
+after_script:
+  - npm run cover

@@ -5,7 +5,7 @@
   "main": "commitlint.config.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha",
-    "cover": "./node_modules/.bin/nyc mocha",
+    "cover": "./node_modules/.bin/nyc mocha && cat ./coverage/lcov.info | coveralls",
     "ex": "tsc ./build/webpack.dev.ts && env DEBUG=true webpack-dev-server --config build/webpack.dev.js --inline --progress --port 1338 && npm run tsc:clean",
     "ex:build": "tsc ./build/webpack.prod.ts && rm -rf dist && webpack --config build/webpack.prod.js && npm run tsc:clean",
     "release": "tsc ./build/main/webpack.prod.ts && rm -rf release && webpack --config build/main/webpack.prod.js && npm run tsc:clean",
@@ -70,7 +70,6 @@
       "./node_modules/ts-node"
     ],
     "reporter": [
-      "html",
       "lcov",
       "text",
       "text-summary"
