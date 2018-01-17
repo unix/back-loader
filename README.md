@@ -18,7 +18,7 @@
 import { BackLoader } from 'back-loader'
 
 const backHandler = new BackLoader({
-  urls?: string[],
+  pages?: string[],
   scripts?: string[],
   styles?: string[],
   images?: string[],
@@ -36,6 +36,12 @@ type loadEvent = {
   success: boolean,
   insertScripts?: Function,
 }
+
+#### More
+
+1. the resources of different domain names can be loaded normally.
+2. if you use `page`, `back-loader` automatically analyzes every resources included in the page. but domain name needs to be the same as the current page. (of course)
+
 ```
 
 #### LICENSE
