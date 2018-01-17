@@ -7,5 +7,7 @@ export const warning = (msg: string) => {
 export const options = {
   pagesError: () => warning('options [pages] error.'),
   scriptsError: () => warning('options [scripts] error.'),
+  stylesError: () => warning('options [styles] error.'),
+  imagesError: () => warning('options [images] error.'),
   isEmpty: () => warning('options is empty!'),
 }
