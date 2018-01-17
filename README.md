@@ -36,13 +36,15 @@ type loadEvent = {
   success: boolean,
   insertScripts?: Function,
 }
+```
+<br>
 
 #### More
 
 1. the resources of different domain names can be loaded normally.
 2. if you use `page`, `back-loader` automatically analyzes every resources included in the page. but domain name needs to be the same as the current page. (of course)
 
-```
+
 
 #### LICENSE
 
