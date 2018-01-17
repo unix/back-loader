@@ -8,6 +8,7 @@
 > a easy and steady preload lib, you can use it to load all kinds of resources. use **back-loader** in your project,
 > can quickly preload more pictures, styles(.css) or scripts, it will make your website more fluent.
 
+<br>
 
 #### Usage
 
@@ -44,7 +45,7 @@ type loadEvent = {
 1. the resources of different domain names can be loaded normally.
 2. if you use `page`, `back-loader` automatically analyzes every resources included in the page. but domain name needs to be the same as the current page. (of course)
 
-
+<br>
 
 #### LICENSE
 
