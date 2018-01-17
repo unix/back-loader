@@ -4,6 +4,7 @@ import { LoaderOptions } from '../types'
 const regs = {
   page: /^http|^\/\//,
   js: /(^http|^\/\/)\S+\.js$/,
+  css: /(^http|^\/\/)\S+\.css$/,
 }
 
 export const pages = (pages: string[]): boolean => {
@@ -20,11 +21,18 @@ export const scripts = (scripts: string[]): boolean => {
   return true
 }
 
+export const styles = (styles: string[]): boolean => {
+  if (!Array.isArray(styles)) return Log.options.stylesError()
+  const unnormalLinks = styles.filter(s => !regs.css.test(s))
+  if (unnormalLinks && unnormalLinks.length) return Log.options.stylesError()
+  return true
+}
 
 export const options = (ops: LoaderOptions): boolean => {
   const checkResults: boolean[] = []
   ops.pages && checkResults.push(pages(ops.pages))
   ops.scripts && checkResults.push(scripts(ops.scripts))
+  ops.styles && checkResults.push(styles(ops.styles))
   
   if (!checkResults.length) return Log.options.isEmpty()
   return !`${checkResults}`.includes('false')
