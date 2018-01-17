@@ -44,5 +44,10 @@ module.exports = {
   
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
+  
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: { keep_fnames: true },
+      sourceMap: false,
+    }),
   ],
 }
