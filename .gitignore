@@ -57,3 +57,11 @@ typings/
 # dotenv environment variables file
 .env
 
+# build scripts
+build/**/*.js
+dist/
+release/
+
+# cover report
+coverage/
+.nyc_output/
