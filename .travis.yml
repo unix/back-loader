@@ -18,5 +18,5 @@ script:
   - /bin/bash build/lint-commits.sh
   - npm run ex:build && npm run release
 
-after_script:
+after_success:
   - npm run cover
