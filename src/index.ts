@@ -15,11 +15,12 @@ export class BackLoader {
   start(): BackLoader {
     this.hub = new EventHub()
     const loader = new Loader(this.hub)
-    const { scripts, styles, pages } = this.options
+    const { scripts, styles, pages, images } = this.options
     
     scripts && loader.scripts(scripts)
     styles && loader.styles(styles)
     pages && loader.pages(pages)
+    images && loader.images(images)
     return this
   }
   

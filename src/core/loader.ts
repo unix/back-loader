@@ -1,6 +1,6 @@
 import { EventHub } from './event'
 import { LoaderEvent } from '../types'
-import { $fetch, filterResources } from '../utils/tools'
+import { $fetch, filterResources, listenImageLoad } from '../utils/tools'
 
 
 export class Loader {
@@ -27,9 +27,21 @@ export class Loader {
         this.scripts(filterResources(html, 'script'))
         this.styles(filterResources(html, 'style'))
       })
-      .catch((e) => {
-        console.log(e)
+      .catch(() => {
+        this.emit(Object.assign({}, this.baseEvent, {
+          type: 'page', source: url, success: false,
+        }))
       })
+    })
+  }
+  
+  images(urls: string[]): void {
+    const imageElements: HTMLImageElement[] = urls
+    .map(url => Object.assign(new Image(), { src: url }))
+    listenImageLoad(imageElements, (url: string) => {
+      this.emit(Object.assign({}, this.baseEvent, {
+        type: 'image', source: url,
+      }))
     })
   }
   

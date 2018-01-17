@@ -1,15 +1,15 @@
-
+// resource load use no-cors mode default
+// html load must use cors
 export const $fetch = (url: string, init: RequestInit = {}) => {
   return fetch(url, Object.assign({ mode: 'no-cors' }, init))
-  .then(r => {
-    console.log(r)
-    return r.text()
-  })
+  .then(r => r.text())
 }
 
+// like './images/xxx' or '../images'
 export const isRelativeURL = (path: string) => {
   return path.startsWith('./') || path.startsWith('..')
 }
+
 
 export const makeResourceReg = (str: string): RegExp => {
   return {
@@ -17,6 +17,8 @@ export const makeResourceReg = (str: string): RegExp => {
     style: /\<link\s+\S?\s?href\=\"([^"]*.css)\"/,
   }[str]
 }
+
+// find scripts and styles in html string
 export const filterResources = (source: string, type: string): string[] => {
   const reg: RegExp = makeResourceReg(type), arr: string[] = []
   let result: string[], num = 10
@@ -26,4 +28,18 @@ export const filterResources = (source: string, type: string): string[] => {
     }
   }
   return arr
+}
+
+export const listenImageLoad = (images: HTMLImageElement[], done: (url: string) => void)
+: void => {
+  const isCompleted = (imgs: HTMLImageElement[]) => !imgs.length
+  const timer: number = window.setInterval(() => {
+    images = images.map(img => {
+      if (!img.complete) return img
+      done(img.src)
+      return null
+    })
+    .filter(v => !!v)
+    isCompleted(images) && clearInterval(timer)
+  }, 300)
 }

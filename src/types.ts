@@ -1,8 +1,9 @@
 
 export type LoaderOptions = {
-  pages?: string[]
-  scripts?: string[]
-  styles?: string[]
+  pages?: string[],
+  scripts?: string[],
+  styles?: string[],
+  images?: string[],
 }
 
 export type LoaderEvent = {
