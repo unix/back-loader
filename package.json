@@ -2,16 +2,22 @@
   "name": "back-loader",
   "version": "0.1.0",
   "description": "",
-  "main": "commitlint.config.js",
+  "main": "release/index.d.ts",
+  "unpkg": "release/back-loader.js",
+  "author": "WittBulter(nanazuimeng123@gmail.com)",
+  "homepage": "https://github.com/DhyanaChina/back-loader#readme",
+  "license": "MIT",
   "scripts": {
     "test": "./node_modules/.bin/mocha",
-    "cover:local": "./node_modules/.bin/nyc mocha",
+    "cover:local": "./node_modules/.bin/nyc mocha && open coverage/lcov-report/index.html",
     "cover:hook": "./node_modules/.bin/nyc mocha && cat ./coverage/lcov.info | coveralls",
-    "ex": "tsc ./build/webpack.dev.ts && env DEBUG=true webpack-dev-server --config build/webpack.dev.js --inline --progress --port 1338 && npm run tsc:clean",
-    "ex:build": "tsc ./build/webpack.prod.ts && rm -rf dist && webpack --config build/webpack.prod.js && npm run tsc:clean",
-    "release": "tsc ./build/main/webpack.prod.ts && rm -rf release && webpack --config build/main/webpack.prod.js && npm run tsc:clean",
-    "tsc:clean": "find build -name '*.js' | xargs rm -f ",
-    "clearup": "rm -rf dist & rm -rf release",
+    "ex": "tsc ./build/webpack.dev.ts && env DEBUG=true webpack-dev-server --config build/webpack.dev.js --inline --progress --port 1338 && npm run clean:tsc",
+    "ex:build": "tsc ./build/webpack.prod.ts && rm -rf dist && webpack --config build/webpack.prod.js && npm run clean:tsc",
+    "release": "tsc ./build/main/webpack.prod.ts && rm -rf release && webpack --config build/main/webpack.prod.js && npm run clean:tsc",
+    "clean:tsc": "find build -name '*.js' | xargs rm -f",
+    "clean:cover": "rm -rf coverage .nyc_output",
+    "clean:build": "rm -rf dist release",
+    "clean:all": "npm run clean:tsc & npm run clean:cover & npm run clean:build",
     "commit": "node_modules/commitizen/bin/commitizen init cz-conventional-changelog --save --save-exact",
     "commitmsg": "commitlint -e $GIT_PARAMS"
   },
@@ -19,12 +25,17 @@
     "type": "git",
     "url": "git+https://github.com/DhyanaChina/back-loader.git"
   },
-  "author": "WittBulter(nanazuimeng123@gmail.com)",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/DhyanaChina/back-loader/issues"
   },
-  "homepage": "https://github.com/DhyanaChina/back-loader#readme",
+  "files": [
+    "release"
+  ],
+  "keywords": [
+    "preload",
+    "back-load",
+    "script-loader"
+  ],
   "devDependencies": {
     "@commitlint/config-angular": "^6.0.2",
     "@types/chai": "^4.1.0",
