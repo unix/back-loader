@@ -2,6 +2,7 @@
 --recursive
 --require ./node_modules/ts-node/register
 --ui bdd
+--check-leaks
 --timeout 60000
 --watch-extensions ts
 test/**/*.ts
