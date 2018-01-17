@@ -14,7 +14,7 @@ export const isRelativeURL = (path: string) => {
 export const makeResourceReg = (str: string): RegExp => {
   return {
     script: /\<script\s+\S?src\=\"([^"]*)\"/g,
-    style: /\<link\s+\S?\s?href\=\"([^"]*.css)\"/,
+    style: /\<link\s+\S?\s?href\=\"([^"]*.css)\"/g,
   }[str]
 }
 
@@ -32,14 +32,17 @@ export const filterResources = (source: string, type: string): string[] => {
 
 export const listenImageLoad = (images: HTMLImageElement[], done: (url: string) => void)
 : void => {
-  const isCompleted = (imgs: HTMLImageElement[]) => !imgs.length
-  const timer: number = window.setInterval(() => {
-    images = images.map(img => {
-      if (!img.complete) return img
-      done(img.src)
-      return null
-    })
-    .filter(v => !!v)
-    isCompleted(images) && clearInterval(timer)
-  }, 300)
+  images.forEach(img => img.onload = () => done(img.src))
+  // const isCompleted = (imgs: HTMLImageElement[]) => !imgs.length
+  // const timer: number = window.setInterval(() => {
+  //
+  //   // images = images.map(img => {
+  //   //   console.log(img)
+  //   //   if (!img.complete) return img
+  //   //   done(img.src)
+  //   //   return null
+  //   // })
+  //   // .filter(v => !!v)
+  //   isCompleted(images) && clearInterval(timer)
+  // }, 300)
 }

@@ -1,7 +1,7 @@
 import * as Check from '../../src/utils/check'
 import { expect } from 'chai'
 
-describe('Utils function test', () => {
+describe('Check function test', () => {
   
   let _warn: (msg?: any, ...p: any[]) => void
   before(() => {
