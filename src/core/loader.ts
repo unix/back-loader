@@ -1,18 +1,12 @@
 import { EventHub } from './event'
 import { LoaderEvent } from '../types'
-import { $fetch, isRelativeURL } from '../utils/tools'
+import { $fetch, filterResources } from '../utils/tools'
 
 
 export class Loader {
   
   hub: EventHub
   readonly baseEvent: LoaderEvent = { source: '', type: 'none', success: true, insertScripts: () => {} }
-  
-  static resourceReg(str: string): RegExp {
-    return {
-      script: /\<script\s+\S?src\=\"([^"]*)\"/g,
-    }[str]
-  }
   
   constructor(hub: EventHub) {
     this.hub = hub
@@ -30,24 +24,13 @@ export class Loader {
     urls.forEach(url => {
       $fetch(url, { mode: 'cors' })
       .then(html => {
-        console.log(html)
-        this.scripts(this.filterResources(html, 'script'))
+        this.scripts(filterResources(html, 'script'))
+        this.styles(filterResources(html, 'style'))
       })
       .catch((e) => {
         console.log(e)
       })
     })
-  }
-  
-  private filterResources(source: string, type: string): string[] {
-    const reg: RegExp = Loader.resourceReg(type), arr: string[] = []
-    let result: string[], num = 10
-    while ((result = reg.exec(source)) && num --) {
-      if (result[1] && !isRelativeURL(result[1])) {
-        arr.push(result[1])
-      }
-    }
-    return arr
   }
   
   private loadURL(urls: string[], type: string): void {
