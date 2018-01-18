@@ -1,5 +1,5 @@
 import { EventHub } from '../../src/core/event'
-import { expect, assert } from 'chai'
+import { expect } from 'chai'
 import { install } from '../dom.nyc'
 
 describe('Core function test', () => {

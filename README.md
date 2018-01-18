@@ -4,7 +4,7 @@
 </div>
 
 <br><br><br>
-### back-loader
+### back-loader (~ 1.2kb gzipped)
 > a easy and steady preload lib, you can use it to load all kinds of resources. 
 
 >use **back-loader** in your project, you can quickly preload more pictures, styles(.css) or scripts, it will make your website more fluent.
