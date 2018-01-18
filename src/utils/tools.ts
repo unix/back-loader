@@ -1,7 +1,7 @@
 // resource load use no-cors mode default
 // html load must use cors
 export const $fetch = (url: string, init: RequestInit = {}) => {
-  return fetch(url, Object.assign({ mode: 'no-cors' }, init))
+  return fetch(url, Object.assign({ mode: 'cors', cache: 'reload' }, init))
   .then(r => r.text())
 }
 
