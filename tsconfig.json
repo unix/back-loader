@@ -2,9 +2,11 @@
   "compilerOptions": {
     "lib": ["es2015", "dom"],
     "target": "es5",
+    "module": "es6",
+    "moduleResolution": "node",
     "declaration": true,
     "outDir": "release/",
-    "sourceMap": true,
+    "sourceMap": false,
     "removeComments": true,
     "noImplicitAny": false,
     "preserveConstEnums": true,

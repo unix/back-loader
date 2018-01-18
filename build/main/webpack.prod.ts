@@ -13,6 +13,8 @@ module.exports = {
     filename: '[name].js',
   },
   
+  target: 'web',
+  
   resolve: {
     extensions: ['.ts', '.js'],
   },
@@ -30,24 +32,20 @@ module.exports = {
       },
       {
         test: /\.ts$/,
-        loaders: [
-          {
-            loader: 'awesome-typescript-loader',
-            options: { configFileName: path.resolve(__dirname, '../../tsconfig.json') },
-          },
-        ],
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          configFile: path.resolve(__dirname, '../../tsconfig.json'),
+        },
       },
     ],
-    
-    exprContextCritical: false,
   },
   
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
   
     new webpack.optimize.UglifyJsPlugin({
-      mangle: { keep_fnames: true },
-      sourceMap: false,
+      compress: { warnings: false },
     }),
   ],
 }
