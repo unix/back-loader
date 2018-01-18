@@ -32,11 +32,12 @@ module.exports = {
       },
       {
         test: /\.ts$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
-        options: {
-          configFile: path.resolve(__dirname, '../../tsconfig.json'),
-        },
+        loaders: [
+          {
+            loader: 'awesome-typescript-loader',
+            options: { configFileName: path.resolve(__dirname, '../../tsconfig.json') },
+          },
+        ],
       },
     ],
   },
