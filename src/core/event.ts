@@ -39,22 +39,28 @@ export class EventHub {
     // just remove one
     if (done) return this.removeOne(eventType, done)
     // remove this type
-    this.eventRecords
-      .filter(re => re.type === eventType)
-      .forEach(re => this.source.removeEventListener(re.type, re.handle))
+    this.eventRecords = this.eventRecords
+    .map(re => {
+      if (re.type !== eventType) return re
+      this.source.removeEventListener(re.type, re.handle)
+      return null
+    })
+    .filter(r => r)
   }
   
   removeAll(): void {
     this.eventRecords
-      .forEach(re => this.source.removeEventListener(re.type, re.handle))
+    .forEach(re => this.source.removeEventListener(re.type, re.handle))
+    this.eventRecords = []
   }
   
   private removeOne(eventType: string, done?: EventHubListener): void {
-    const record: EventRecord = this.eventRecords.find(record => {
+    const index: number = this.eventRecords.findIndex(record => {
       return record.type === eventType && record.done === done
     })
-    if (!record) return
-    this.source.removeEventListener(eventType, record.handle)
+    if (index < 0) return
+    this.source.removeEventListener(eventType, this.eventRecords[index].handle)
+    this.eventRecords.splice(index, 1)
   }
   
 }

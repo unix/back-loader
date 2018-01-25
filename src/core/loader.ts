@@ -22,12 +22,12 @@ export class Loader {
   
   pages(urls: string[]): void {
     urls.forEach(url => {
-      $fetch(url, { mode: 'cors' })
+      $fetch(url, { mode: 'no-cors' })
       .then(html => {
         this.scripts(filterResources(html, 'script'))
         this.styles(filterResources(html, 'style'))
       })
-      .catch(() => {
+      .catch((e) => {
         this.emit(Object.assign({}, this.baseEvent, {
           type: 'page', source: url, success: false,
         }))

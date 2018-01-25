@@ -13,6 +13,8 @@ module.exports = {
     filename: '[name].js',
   },
   
+  target: 'web',
+  
   resolve: {
     extensions: ['.ts', '.js'],
   },
@@ -38,16 +40,13 @@ module.exports = {
         ],
       },
     ],
-    
-    exprContextCritical: false,
   },
   
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
   
     new webpack.optimize.UglifyJsPlugin({
-      mangle: { keep_fnames: true },
-      sourceMap: false,
+      compress: { warnings: false },
     }),
   ],
 }
