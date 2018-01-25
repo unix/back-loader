@@ -1,6 +1,6 @@
 {
   "name": "back-loader",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "a easy and steady preload lib",
   "main": "release/index",
   "unpkg": "release/index.js",
