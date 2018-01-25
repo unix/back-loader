@@ -9,6 +9,8 @@
 
 >use **back-loader** in your project, you can quickly preload more pictures, styles(.css) or scripts, it will make your website more fluent.
 
+According to my data，use `back-loader` preload all page in production project, DomReadyTime < 200 ms !!!
+the user experience of each page can be greatly improved.
 <br>
 
 #### Usage
@@ -39,14 +41,13 @@ type loadEvent = {
   insertScripts?: Function,
 }
 ```
-<br>
 
-#### More
-
-1. the resources of different domain names can be loaded normally.
-2. if you use `page`, `back-loader` automatically analyzes every resources included in the page. but domain name needs to be the same as the current page. (of course)
+For example, i want preload `google.com/new-product.html` page,  then append the above code on the home page (or any other pages),
+like `setTimeout(() => backHandler.start(), 1000)`, browser will load all resources and caching to memory or disk,
+waiting for the user to browse `google.com/new-product.html`，just need few millisecond!
 
 <br>
+
 
 #### LICENSE
 
