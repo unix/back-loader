@@ -1,6 +1,6 @@
 import { EventHub } from './event'
 import { LoaderEvent } from '../types'
-import { $fetch, filterResources, listenImageLoad } from '../utils/tools'
+import { $fetch, hiddenIframe, listenImageLoad } from '../utils/tools'
 
 
 export class Loader {
@@ -22,16 +22,9 @@ export class Loader {
   
   pages(urls: string[]): void {
     urls.forEach(url => {
-      $fetch(url, { mode: 'no-cors' })
-      .then(html => {
-        this.scripts(filterResources(html, 'script'))
-        this.styles(filterResources(html, 'style'))
-      })
-      .catch((e) => {
-        this.emit(Object.assign({}, this.baseEvent, {
-          type: 'page', source: url, success: false,
-        }))
-      })
+      const iframe: HTMLIFrameElement = document.createElement('iframe')
+      iframe.src = url
+      document.body.appendChild(hiddenIframe(iframe))
     })
   }
   

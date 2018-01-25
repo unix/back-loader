@@ -33,16 +33,15 @@ export const filterResources = (source: string, type: string): string[] => {
 export const listenImageLoad = (images: HTMLImageElement[], done: (url: string) => void)
 : void => {
   images.forEach(img => img.onload = () => done(img.src))
-  // const isCompleted = (imgs: HTMLImageElement[]) => !imgs.length
-  // const timer: number = window.setInterval(() => {
-  //
-  //   // images = images.map(img => {
-  //   //   console.log(img)
-  //   //   if (!img.complete) return img
-  //   //   done(img.src)
-  //   //   return null
-  //   // })
-  //   // .filter(v => !!v)
-  //   isCompleted(images) && clearInterval(timer)
-  // }, 300)
+}
+
+export const hiddenIframe = (iframe: HTMLIFrameElement): HTMLIFrameElement => {
+  iframe.style.opacity = '0'
+  iframe.style.position = 'fixed'
+  iframe.style.top = '-20000px'
+  iframe.style.left = '-20000px'
+  iframe.style.zIndex = '-100'
+  iframe.style.width = '1px'
+  iframe.style.height = '1px'
+  return iframe
 }
