@@ -4,8 +4,8 @@
   "description": "a easy and steady preload lib",
   "main": "release/index",
   "unpkg": "release/index.js",
-  "author": "WittBulter(nanazuimeng123@gmail.com)",
-  "homepage": "https://github.com/DhyanaChina/back-loader#readme",
+  "author": "unix (lambdas.dev@gmail.com)",
+  "homepage": "https://github.com/unix/back-loader#readme",
   "license": "MIT",
   "scripts": {
     "test": "./node_modules/.bin/mocha",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DhyanaChina/back-loader.git"
+    "url": "git+https://github.com/unix/back-loader.git"
   },
   "files": [
     "release"
