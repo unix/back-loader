@@ -16,13 +16,10 @@ branches:
   only:
     - master
 
-before_install: git fetch --depth=1000
-
 install:
   - npm i
 
 script:
-  - /bin/bash build/lint-commits.sh
   - npm run ex:build && npm run release
 
 after_success:

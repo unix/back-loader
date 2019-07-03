@@ -17,16 +17,11 @@
     "clean:tsc": "find build -name '*.js' | xargs rm -f",
     "clean:cover": "rm -rf coverage .nyc_output",
     "clean:build": "rm -rf dist release",
-    "clean:all": "npm run clean:tsc & npm run clean:cover & npm run clean:build",
-    "commit": "node_modules/commitizen/bin/commitizen init cz-conventional-changelog --save --save-exact",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "clean:all": "npm run clean:tsc & npm run clean:cover & npm run clean:build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DhyanaChina/back-loader.git"
-  },
-  "bugs": {
-    "url": "https://github.com/DhyanaChina/back-loader/issues"
   },
   "files": [
     "release"
@@ -37,7 +32,6 @@
     "script-loader"
   ],
   "devDependencies": {
-    "@commitlint/config-angular": "^6.0.2",
     "@types/chai": "^4.1.0",
     "@types/html-webpack-plugin": "^2.30.1",
     "@types/jsdom": "^11.0.4",
@@ -47,12 +41,7 @@
     "@types/webpack-merge": "^4.1.1",
     "awesome-typescript-loader": "^3.4.1",
     "chai": "^4.1.2",
-    "commitizen": "^2.9.6",
-    "commitlint": "^5.2.5",
-    "coveralls": "^3.0.0",
-    "cz-conventional-changelog": "^2.1.0",
     "html-webpack-plugin": "^2.30.1",
-    "husky": "^0.14.3",
     "jsdom": "^11.5.1",
     "mocha": "^4.1.0",
     "nyc": "^11.4.1",
@@ -63,11 +52,6 @@
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.11.0",
     "webpack-merge": "^4.1.1"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   },
   "dependencies": {},
   "nyc": {
